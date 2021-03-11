@@ -1,0 +1,17 @@
+{
+  "name": "3d-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "nuxt": "^2.15.2",
+    "three": "^0.126.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nuxt"
+  },
+  "author": "",
+  "license": "ISC"
+}
