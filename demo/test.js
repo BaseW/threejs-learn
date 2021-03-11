@@ -15,7 +15,7 @@ function init() {
     camera.position.y = 100;
     camera.position.z = 150;
     camera.lookAt({ x: 0, y: 0, z: 0 });
-    const controls = new THREE.OrbitControls(camera);
+    // const controls = new THREE.OrbitControls(camera);
 
     // メッシュ
     /*
