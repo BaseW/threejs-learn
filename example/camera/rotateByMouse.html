@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>camera</title>
+</head>
+
+<body>
+    <script src="../three/three.min.js"></script>
+    <script src="../three/OrbitControls.js"></script>
+    <script src="../three/GLTFLoader.js"></script>
+    <script>
+        function init() {
+            // scene
+            const scene = new THREE.Scene();
+
+            // camera
+            const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+            camera.position.y = 50;
+            camera.position.z = 200;
+
+            // henlpers
+            const axes = new THREE.AxisHelper(200);
+            scene.add(axes);
+            const grids = new THREE.GridHelper(200, 150);
+            scene.add(grids);
+
+            // others
+            const geometry = new THREE.SphereGeometry(radiud = 50);
+            const material = new THREE.MeshBasicMaterial({ color: 0x666666 });
+            const sphere = new THREE.Mesh(geometry, material);
+            scene.add(sphere);
+
+            // renderer, controls
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+            // レンダリング
+            let rot = 0;
+            let radian = 0;
+            let mouseX = 0;
+
+            document.addEventListener("mousemove", (event) => {
+                mouseX = event.pageX;
+            });
+
+            const animate = () => {
+                // マウスの位置に応じて角度を設定
+                // マウスのX座標がステージの幅の何%の位置にあるか調べてそれを360度で乗算する
+                const targetRot = (mouseX / window.innerWidth) * 360;
+                // イージングの公式を用いて滑らかにする
+                // 値 += (目標値 - 現在の値) * 減速値
+                rot += (targetRot - rot) * 0.02;
+                radian = rot * Math.PI / 180;
+                camera.position.x = 200 * Math.cos(radian);
+                camera.position.z = 200 * Math.sin(radian);
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            };
+            animate();
+        }
+        window.onload = init();
+    </script>
+</body>
+
+</html>

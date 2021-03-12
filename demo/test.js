@@ -15,7 +15,7 @@ function init() {
     camera.position.y = 100;
     camera.position.z = 150;
     camera.lookAt({ x: 0, y: 0, z: 0 });
-    // const controls = new THREE.OrbitControls(camera);
+    const controls = new THREE.OrbitControls(camera);
 
     // メッシュ
     /*
@@ -26,17 +26,17 @@ function init() {
     const geometry = new THREE.BoxGeometry(50, 50, 50);
     const material = new THREE.MeshLambertMaterial({ color: 0xd5595f });
     const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    // scene.add(cube);
     const geometry2 = new THREE.BoxGeometry(50, 50, 50);
     const material2 = new THREE.MeshLambertMaterial({ color: 0x4e7dbf });
     const cube2 = new THREE.Mesh(geometry2, material2);
     cube2.position.set(60, -30, 40);
-    scene.add(cube2);
+    // scene.add(cube2);
     const geometry3 = new THREE.SphereGeometry(50, 50, 50)
 
     // const material3 = new THREE.MeshLambertMaterial({ color: 0xd5595f });
     // 画像を読み込む
-    // const loader = new THREE.TextureLoader();
+    const loader = new THREE.TextureLoader();
     // loader.crossOrigin = "*";
     // loader.crossOrigin = "";
     // const texture = THREE.ImageUtils.loadTexture('test.png');
@@ -49,11 +49,12 @@ function init() {
     const material3 = new THREE.MeshLambertMaterial({ color: 0x4e7dbf });
     const ball1 = new THREE.Mesh(geometry3, material3);
     ball1.position.set(-60, 30, -40);
-    scene.add(ball1);
+    // scene.add(ball1);
 
     // glbを読み込む
-    const model = loadGLB();
-    scene.add(model);
+    // const model = loadGLB();
+    // scene.add(model);
+    
 
     // ライト
     const light = new THREE.DirectionalLight(0xffffff);
@@ -145,11 +146,11 @@ function loadGLB() {
     loader.load(
         url, 
         function ( gltf ){
+            console.log(gltf)
             model = gltf.scene;
             model.name = "tree";
             model.position.set(0,200,0);
 
-            model["test"] = 100;
             console.log("model");
         },
         function ( error ) {

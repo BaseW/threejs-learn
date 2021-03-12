@@ -4,3 +4,6 @@ node_modules
 package-lock.json
 *png
 *glb
+*gltf
+00_intro
+01_castle_people
