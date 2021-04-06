@@ -1,3 +1,4 @@
+// https://webglfundamentals.org/webgl/lessons/webgl-how-it-works.html
 "use strict";
 
 function main() {
