@@ -7,3 +7,6 @@ package-lock.json
 *gltf
 00_intro
 01_castle_people
+test.vert
+test.frag
+test.html
